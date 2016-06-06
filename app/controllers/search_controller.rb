@@ -1,5 +1,5 @@
 class SearchController < ApplicationController
   def index
-    response = Station.all
+    @stations = Station.limit(10).get(params['q'])
   end
 end

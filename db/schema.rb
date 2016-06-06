@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(version: 20160606161011) do
     t.string   "name"
     t.text     "address"
     t.string   "fuel_types"
-    t.integer  "distance"
+    t.float    "distance"
     t.string   "access_times"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false

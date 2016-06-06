@@ -19,7 +19,7 @@ class SearchService
 
   def save_stations(stations)
     stations.each do |station|
-      Station.create(
+      Station.find_or_create_by(
         name: station["station_name"],
         address: station["street_address"],
         fuel_types: station['fuel_type_code'],

@@ -4,7 +4,7 @@ class CreateStations < ActiveRecord::Migration
       t.string :name
       t.text :address
       t.string :fuel_types
-      t.integer :distance
+      t.float :distance
       t.string :access_times
 
       t.timestamps null: false
