@@ -4,7 +4,7 @@ class SearchService
     @conn.headers["X-Api-Key"] = "DCOEXEwnPoZE0mYItRTJQds02xvsoXMHkvcCmYEe"
   end
 
-  def search(zip)
-    @conn.get("nearest.json?location=#{zip}")
+  def search(zip, radius=6.0)
+    @conn.get "nearest.json", { location: zip, radius: radius}
   end
 end
