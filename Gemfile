@@ -18,8 +18,10 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'rspec'
   gem 'capybara'
-  gem 'pry', :require => 'pry'
+  gem 'pry'
+  gem 'pry-rails'
   gem 'vcr'
+  gem 'webmock'
 end
 
 group :development do
