@@ -7,4 +7,9 @@ class SearchService
   def search(zip, radius=6.0)
     @conn.get "nearest.json", { location: zip, radius: radius}
   end
+
+  def search_response(zip, radius=6.0)
+    response = search(zip, radius)
+    require "pry"; binding.pry
+  end
 end
