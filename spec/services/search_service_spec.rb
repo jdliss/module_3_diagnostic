@@ -6,6 +6,7 @@ describe SearchService do
       VCR.use_cassette 'search_service/locate' do
         service = SearchService.new
         response = service.search("80203")
+        require "pry"; binding.pry
       end
     end
   end
