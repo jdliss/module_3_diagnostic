@@ -8,8 +8,24 @@ class SearchService
     @conn.get "nearest.json", { location: zip, radius: radius}
   end
 
-  def search_response(zip, radius=6.0)
+  def populate(zip, radius=6.0)
     response = search(zip, radius)
-    require "pry"; binding.pry
+    body = JSON.parse(response.body)
+    stations = body["fuel_stations"].select do |station|
+      station['fuel_type_code'].include?("ELEC") || station['fuel_type_code'].include?("LPG")
+    end
+    save_stations(stations)
+  end
+
+  def save_stations(stations)
+    stations.each do |station|
+      Station.create(
+        name: station["station_name"],
+        address: station["street_address"],
+        fuel_types: station['fuel_type_code'],
+        distance: station["distance"].to_s,
+        access_times: station["access_days_time"]
+      )
+    end
   end
 end
